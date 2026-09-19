@@ -1,0 +1,416 @@
+/* ==========================================================================
+   Messrs Lahema Labour Consultancy Limited — site stylesheet
+   ========================================================================== */
+
+/* Reset — kills default browser margins so the navbar sits flush at 0,0 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+:root {
+  /* Core palette — 4 colours, each with a job */
+  --navy: #16305c;
+  --navy-dark: #0f2246;
+  --emerald: #1e7145;
+  --emerald-dark: #16532f;
+  --red: #b23a2f;
+  --red-dark: #8c2c23;
+  --paper: #f6f4ee;
+  --ink: #20242b;
+  --ink-soft: #4a4f58;
+  --line: #dedad0;
+
+  --radius-soft: 8px;
+  --radius-pill: 999px;
+
+  --max-width: 1120px;
+}
+
+body {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--ink);
+  background: var(--paper);
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4 {
+  font-family: "Fraunces", Georgia, serif;
+  color: var(--navy);
+  line-height: 1.15;
+  font-weight: 600;
+}
+
+h1 { font-size: clamp(2rem, 4vw, 3rem); }
+h2 { font-size: clamp(1.5rem, 3vw, 2.1rem); margin-bottom: 0.75rem; }
+h3 { font-size: 1.25rem; margin-bottom: 0.5rem; }
+
+p { max-width: 68ch; }
+
+a {
+  color: var(--emerald);
+  text-decoration: none;
+}
+
+img { max-width: 100%; display: block; }
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* ---------- Navbar — flush, 0 radius, sharp skeleton ---------- */
+.site-header {
+  background: var(--navy);
+  border-radius: 0;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.85rem 1.5rem;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.navbar__brand {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.navbar__brand img {
+  height: 42px;
+  width: 42px;
+}
+
+.navbar__brand span {
+  font-family: "Fraunces", serif;
+  color: #fff;
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.navbar__links {
+  display: flex;
+  gap: 1.75rem;
+  list-style: none;
+}
+
+.navbar__links a {
+  color: #e7ebf3;
+  font-weight: 500;
+  font-size: 0.95rem;
+  padding-bottom: 4px;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.navbar__links a:hover,
+.navbar__links a[aria-current="page"] {
+  color: var(--emerald);
+  border-bottom-color: var(--emerald);
+}
+
+.navbar__toggle {
+  display: none;
+}
+
+/* ---------- Buttons — pill, the one place radius is loud ---------- */
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.75rem;
+  border-radius: var(--radius-pill);
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.18s ease, color 0.18s ease;
+}
+
+.btn--primary {
+  background: var(--emerald);
+  color: #fff;
+}
+.btn--primary:hover { background: var(--navy); }
+
+.btn--hero {
+  background: var(--red);
+  color: #fff;
+}
+.btn--hero:hover { background: var(--navy); }
+
+.btn--ghost {
+  background: transparent;
+  color: #fff;
+  border: 2px solid rgba(255,255,255,0.5);
+}
+.btn--ghost:hover {
+  background: rgba(255,255,255,0.12);
+  border-color: #fff;
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  background: var(--navy);
+  color: #fff;
+  padding: 4.5rem 0 5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero .container {
+  max-width: 760px;
+}
+
+.hero p.eyebrow-free-label {
+  color: #b7c3d9;
+  font-size: 1.05rem;
+  margin-bottom: 1rem;
+}
+
+.hero h1 { color: #fff; margin-bottom: 1rem; }
+
+.hero p.lede {
+  color: #d7deea;
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  max-width: 56ch;
+}
+
+/* ---------- Sections ---------- */
+.section {
+  padding: 4rem 0;
+}
+
+.section--muted {
+  background: #efece2;
+}
+
+.section-intro {
+  max-width: 62ch;
+  color: var(--ink-soft);
+  margin-bottom: 2.5rem;
+}
+
+/* ---------- Cards (services preview, why-us) ---------- */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+
+.card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-soft);
+  padding: 1.75rem;
+  transition: border-color 0.18s ease, transform 0.18s ease;
+}
+
+.card:hover {
+  border-color: var(--emerald);
+  transform: translateY(-2px);
+}
+
+.card h3 { margin-bottom: 0.5rem; }
+.card p { color: var(--ink-soft); font-size: 0.95rem; margin: 0; }
+
+/* ---------- Service category blocks (Services page) ---------- */
+.service-block {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-soft);
+  padding: 1.75rem 2rem;
+  margin-bottom: 1.25rem;
+  background: #fff;
+}
+
+.service-block h3 {
+  color: var(--emerald-dark);
+  margin-bottom: 0.85rem;
+}
+
+.service-block ul {
+  list-style: none;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.service-block li {
+  padding-left: 1.1rem;
+  position: relative;
+  color: var(--ink-soft);
+}
+
+.service-block li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 6px;
+  height: 6px;
+  background: var(--red);
+  border-radius: 50%;
+}
+
+/* ---------- CTA band ---------- */
+.cta-band {
+  background: var(--emerald);
+  color: #fff;
+  padding: 3rem 0;
+  text-align: left;
+}
+
+.cta-band .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.cta-band h2 { color: #fff; margin: 0; }
+
+.cta-band .btn--primary {
+  background: var(--navy);
+}
+.cta-band .btn--primary:hover { background: var(--navy-dark); }
+
+/* ---------- About page specifics ---------- */
+.about-block {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.about-block .card { height: 100%; }
+
+@media (max-width: 720px) {
+  .about-block { grid-template-columns: 1fr; }
+}
+
+/* ---------- Contact page ---------- */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+}
+
+.contact-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-soft);
+  padding: 2rem;
+}
+
+.contact-card h3 { margin-bottom: 1rem; }
+
+.contact-card p { margin-bottom: 0.6rem; color: var(--ink-soft); }
+
+.map-frame {
+  width: 100%;
+  min-height: 320px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-soft);
+  overflow: hidden;
+}
+
+.map-frame iframe {
+  width: 100%;
+  height: 100%;
+  min-height: 320px;
+  border: 0;
+}
+
+@media (max-width: 720px) {
+  .contact-grid { grid-template-columns: 1fr; }
+}
+
+/* ---------- Footer — flush, 0 radius ---------- */
+.site-footer {
+  background: var(--navy-dark);
+  color: #c9d2e0;
+  border-radius: 0;
+  padding: 3rem 0 1.5rem;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.footer-grid h4 {
+  color: #fff;
+  font-family: "Fraunces", serif;
+  font-size: 1rem;
+  margin-bottom: 0.85rem;
+}
+
+.footer-grid ul { list-style: none; display: grid; gap: 0.5rem; }
+.footer-grid a { color: #c9d2e0; }
+.footer-grid a:hover { color: var(--emerald); }
+.footer-grid p { color: #c9d2e0; font-size: 0.95rem; }
+
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.12);
+  padding-top: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  font-size: 0.85rem;
+}
+
+.powered-by {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #c9d2e0;
+}
+
+.powered-by img {
+  height: 18px;
+  width: 18px;
+}
+
+.powered-by:hover { color: var(--emerald); }
+
+@media (max-width: 780px) {
+  .footer-grid { grid-template-columns: 1fr; }
+}
+
+/* ---------- Mobile nav ---------- */
+@media (max-width: 720px) {
+  .navbar { flex-wrap: wrap; }
+  .navbar__links {
+    width: 100%;
+    justify-content: space-between;
+    gap: 0.5rem;
+    padding-top: 0.75rem;
+    flex-wrap: wrap;
+  }
+  .cta-band .container { flex-direction: column; align-items: flex-start; }
+}
+
+/* ---------- Accessibility ---------- */
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--red);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; scroll-behavior: auto !important; }
+}
