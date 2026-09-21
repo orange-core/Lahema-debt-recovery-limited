@@ -30,9 +30,6 @@ html {
   --radius-pill: 999px;
 
   --max-width: 1120px;
-
-  --lahema-logo: url("data:image/png;base64,PLACEHOLDER_LAHEMA");
-  --orange-logo: url("data:image/png;base64,PLACEHOLDER_ORANGE");
 }
 
 body {
@@ -89,17 +86,14 @@ img { max-width: 100%; display: block; }
   gap: 0.65rem;
 }
 
-.navbar__brand .logo-mark {
+.navbar__brand img {
   height: 42px;
   width: 42px;
-  background-image: var(--lahema-logo);
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
+  object-fit: contain;
   flex-shrink: 0;
 }
 
-.navbar__brand span.brand-name {
+.navbar__brand span {
   font-family: "Fraunces", serif;
   color: #fff;
   font-size: 1.05rem;
@@ -388,13 +382,10 @@ img { max-width: 100%; display: block; }
   color: #c9d2e0;
 }
 
-.powered-by .logo-mark-orange {
+.powered-by img {
   height: 18px;
   width: 18px;
-  background-image: var(--orange-logo);
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
+  object-fit: contain;
   flex-shrink: 0;
 }
 
